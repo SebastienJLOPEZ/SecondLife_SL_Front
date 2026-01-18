@@ -1,0 +1,92 @@
+.header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navList li {
+    display: inline;
+}
+
+.navList a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navList a:hover {
+    text-decoration: underline;
+}
+
+.logo a {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.notification {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.profileMenu {
+    position: relative;
+}
+
+.profileButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.profileButton:hover {
+    opacity: 0.8;
+}
+
+.dropdownMenu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    padding: 0.5rem 0;
+    z-index: 1000;
+    margin-top: 0.5rem;
+}
+
+.dropdownMenu a,
+.dropdownMenu button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    color: #333;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.dropdownMenu a:hover,
+.dropdownMenu button:hover {
+    background-color: #f0f0f0;
+    text-decoration: none;
+}

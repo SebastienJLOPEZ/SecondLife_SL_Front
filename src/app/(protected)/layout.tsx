@@ -1,22 +1,9 @@
-import type { Metadata } from 'next';
-import ProtectedRoute from '@/components/protectedRoute/protectedRoute';
-// import Navbar from "@/components/navbar/navbar";
-// import Header from "@/components/header/header";
+import ProtectedRoute from '@/src/components/protectedRoute/protectedRoute';
 
-export const metadata: Metadata = {
-};
-
-export default function RootLayout({
-  children,
+export default function ProtectedLayout({
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-
-  return (
-    <ProtectedRoute>
-      {/* <Header /> */}
-      {children}
-      {/* <Navbar /> */}
-    </ProtectedRoute>
-  );
+    return <ProtectedRoute>{children}</ProtectedRoute>;
 }
