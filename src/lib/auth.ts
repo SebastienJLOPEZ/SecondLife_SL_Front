@@ -11,6 +11,8 @@ export const setTokens = (accessToken?: string, refreshToken?: string) => {
     if (typeof window !== "undefined") {
         if (accessToken) localStorage.setItem("accessToken", accessToken);
         if (refreshToken) localStorage.setItem("refreshToken", refreshToken);
+        // Dispatch event for auth state change
+        window.dispatchEvent(new Event('authStateChanged'));
     }
 }
 
@@ -18,6 +20,8 @@ export const clearTokens = () => {
     if (typeof window !== "undefined") {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
+        // Dispatch event for auth state change
+        window.dispatchEvent(new Event('authStateChanged'));
     }
 }
 
