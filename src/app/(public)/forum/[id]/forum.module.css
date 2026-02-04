@@ -1,0 +1,162 @@
+.forumContainer {
+  padding: 16px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction : column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.firstMessageContainer {
+    border:#000 2px solid;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 16px;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.firstMessage {
+    display: flex;
+}
+
+.firstMessageInfo {
+    background-color: #808000;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid #000;
+}
+
+.firstMessageInfo p {
+    margin: 4px 0;
+    font-size: larger;
+}
+
+.firstMessageContent {
+    flex: 1;
+    padding: 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.firstMessageContent h1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 8px;
+    margin: 0;
+    background-color: #d3d3d3;
+    color: #000;
+}
+
+.firstMessageContent small {
+    display: block;
+    padding: 8px;
+    background-color: #d3d3d3;
+    border-bottom: 2px solid #000;
+    font-size: 14px;
+}
+
+.firstMessageContent p {
+    padding: 16px;
+    margin: 0;
+}
+
+.messages {
+    border:#000 2px solid;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.message {
+    border-bottom: 2px solid #000;
+    display: flex;
+}
+
+.message:last-child {
+    border-bottom: none;
+}
+
+.senderInfo {
+    background-color: #808000;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid #000;
+}
+
+.senderInfo p {
+    margin: 4px 0;
+    font-size: larger;
+}
+
+.messageContent {
+    flex: 1;
+    padding: 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.messageContent h3 {
+    border-bottom: 2px solid #000;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #d3d3d3;
+    color: #000;
+}
+
+.messageContent p {
+    padding: 16px;
+    margin: 0;
+}
+
+.respondSection {
+    width: 80%;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.respondSection form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.respondSection textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 12px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.respondSection button {
+    padding: 10px 32px;
+    background-color: #808000;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.respondSection button:hover {
+    background-color: #6b6b00;
+}

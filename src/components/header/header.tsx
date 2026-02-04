@@ -2,15 +2,30 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { clearTokens } from '@/src/lib/auth';
 import styles from './header.module.css';
+import NotificationPanel from '../notificationPanel/notificationPanel';
 
 export default function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+    const [isNotificationPanelOpen, setIsNotificationPanelOpen] = useState(false);
 
     useEffect(() => {
-        // Only check localStorage after component mounts on client
-        setIsLoggedIn(!!localStorage.getItem('accessToken'));
+        // Check initial auth state
+        const checkAuthState = () => {
+            setIsLoggedIn(!!localStorage.getItem('accessToken'));
+        };
+        
+        checkAuthState();
+
+        // Listen for auth state changes
+        window.addEventListener('authStateChanged', checkAuthState);
+
+        // Cleanup listener on unmount
+        return () => {
+            window.removeEventListener('authStateChanged', checkAuthState);
+        };
     }, []);
 
     return (
@@ -33,9 +48,12 @@ export default function Header() {
                     {isLoggedIn ? (
                         <>
                             <li>
-                                <Link href="/notifications" className={styles.notification}>
+                                <button 
+                                    className={styles.notificationButton}
+                                    onClick={() => setIsNotificationPanelOpen(!isNotificationPanelOpen)}
+                                >
                                     🔔
-                                </Link>
+                                </button>
                             </li>
                             <li className={styles.profileMenu}>
                                 <button 
@@ -47,12 +65,11 @@ export default function Header() {
                                 {isProfileMenuOpen && (
                                     <div className={styles.dropdownMenu}>
                                         <Link href="/profile" onClick={() => setIsProfileMenuOpen(false)}>Mon Profil</Link>
+                                        <Link href="/createoffer" onClick={() => setIsProfileMenuOpen(false)}>Créer une Offre</Link>
                                         <Link href="/settings" onClick={() => setIsProfileMenuOpen(false)}>Paramètres</Link>
                                         <button 
                                             onClick={() => {
-                                                localStorage.removeItem('accessToken');
-                                                localStorage.removeItem('refreshToken');
-                                                setIsLoggedIn(false);
+                                                clearTokens();
                                                 setIsProfileMenuOpen(false);
                                                 window.location.href = '/';
                                             }}
@@ -75,6 +92,10 @@ export default function Header() {
                     )}
                 </ul>
             </nav>
+            {/* Notification Side Panel */}
+            {isNotificationPanelOpen && (
+                <NotificationPanel setIsNotificationPanelOpen={setIsNotificationPanelOpen} />
+            )}
         </header>
     );
 }

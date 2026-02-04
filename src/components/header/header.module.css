@@ -41,6 +41,20 @@
     cursor: pointer;
 }
 
+.notificationButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.notificationButton:hover {
+    opacity: 0.8;
+}
+
 .profileMenu {
     position: relative;
 }
