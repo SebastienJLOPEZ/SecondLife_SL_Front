@@ -1,0 +1,48 @@
+.offerListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.offerCard {
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.3s ease;
+}
+
+.offerCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.statusButton,
+.editButton {
+    flex: 1;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.statusButton:hover,
+.editButton:hover {
+    background-color: #f0f0f0;
+}
