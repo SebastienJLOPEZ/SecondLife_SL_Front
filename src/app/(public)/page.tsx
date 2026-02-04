@@ -1,5 +1,9 @@
+import ThemePopUp from "@/src/components/themePopUp/themePopUp";
+
 export default function Home() {
   return (
-    <main></main>
+    <main>
+      <ThemePopUp />
+    </main>
   );
 }
