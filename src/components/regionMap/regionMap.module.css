@@ -1,0 +1,30 @@
+.mapContainer {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.map {
+    width: 100%;
+    height: auto;
+}
+
+.region {
+    fill: #3b82f6;
+    stroke: #ffffff;
+    stroke-width: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.region:hover {
+    fill: #2563eb;
+    stroke: #1e40af;
+    stroke-width: 2;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.region:active {
+    fill: #1e40af;
+}

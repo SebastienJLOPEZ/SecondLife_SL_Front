@@ -24,12 +24,12 @@ export default function LoginPage() {
 
         const data = await res.json();
         if (res.ok) {
-            localStorage.setItem('accessToken', data.token);
+            localStorage.setItem('accessToken', data.accessToken);
             localStorage.setItem('refreshToken', data.refreshToken);
             alert('Connexion réussie !');
             setTimeout(() => {
-                    router.push('/');
-                }, 200);
+                router.back();
+            }, 200);
         } else {
             alert('Erreur de connexion : ' + data.message);
         }
