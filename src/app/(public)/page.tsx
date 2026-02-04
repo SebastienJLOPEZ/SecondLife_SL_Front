@@ -1,3 +1,4 @@
+import ThemePopUp from "@/src/components/themePopUp/themePopUp";
 import Link from "next/dist/client/link";
 import RegionMap from "@/src/components/regionMap/regionMap";
 import styles from './page.module.css';
@@ -6,6 +7,7 @@ import france from '@svg-maps/france.regions';
 export default function Home() {
   return (
     <main >
+      <ThemePopUp />
       <div className={styles.title}>
         <h2>Bienvenue sur le site d&apos;échange entre particuliers</h2>
       </div>
