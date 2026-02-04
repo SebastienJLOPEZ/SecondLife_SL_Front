@@ -1,0 +1,80 @@
+.forumContainer {
+  padding: 16px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction : column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.adminThreadsSection,
+.publicThreadsSection {
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.adminThreadsSection {
+  border-bottom: none;
+  border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.publicThreadsSection {
+  border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+}
+
+.adminThreadsSection h2,
+.publicThreadsSection h2 {
+  margin: 0;
+  font-size: 24px;
+  padding: 8px;
+  background-color: #d3d3d3;
+  color: #000;
+}
+
+.threadCard {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #90ee90;
+  text-decoration: none;
+  color: #000;
+}
+
+.threadCard:hover {
+  background-color: #7fd87f;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background-color: #d3d3d3;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+}
