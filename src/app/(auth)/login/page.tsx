@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { setTokens } from '@//src/lib/auth';
 import styles from './login.module.css';
 import Link from 'next/link';
 
@@ -24,8 +25,7 @@ export default function LoginPage() {
 
         const data = await res.json();
         if (res.ok) {
-            localStorage.setItem('accessToken', data.token);
-            localStorage.setItem('refreshToken', data.refreshToken);
+            setTokens(data.accessToken, data.refreshToken);
             alert('Connexion réussie !');
             setTimeout(() => {
                     router.push('/');
