@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { clearTokens } from '@/src/lib/auth';
 import styles from './header.module.css';
 import NotificationPanel from '../notificationPanel/notificationPanel';
+import Image from 'next/image';
 
 export default function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +34,7 @@ export default function Header() {
             <nav>
                 <ul className={styles.navList}>
                     <li className={styles.logo}>
-                        <Link href="/">🏠 SecondLife</Link>
+                        <Link href="/"><Image src="/images/logo.webp" alt="SecondLife Logo" width={64} height={64} /></Link>
                     </li>
                     <li>
                         <Link href="/offers">Offres</Link>
@@ -47,13 +48,16 @@ export default function Header() {
                     <div className={styles.spacer}></div>
                     {isLoggedIn ? (
                         <>
-                            <li>
+                            <li className={styles.notificationContainer}>
                                 <button 
                                     className={styles.notificationButton}
                                     onClick={() => setIsNotificationPanelOpen(!isNotificationPanelOpen)}
                                 >
                                     🔔
                                 </button>
+                            </li>
+                            <li className={styles.messagesMenu}>
+                                <Link href="/messages">💬</Link>
                             </li>
                             <li className={styles.profileMenu}>
                                 <button 
@@ -92,7 +96,6 @@ export default function Header() {
                     )}
                 </ul>
             </nav>
-            {/* Notification Side Panel */}
             {isNotificationPanelOpen && (
                 <NotificationPanel setIsNotificationPanelOpen={setIsNotificationPanelOpen} />
             )}
