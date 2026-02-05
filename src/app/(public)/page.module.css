@@ -18,7 +18,7 @@
 .createButton {
     display: inline-block;
     padding: 0.875rem 2rem;
-    background-color: #3b82f6;
+    background-color: #094227;
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -27,7 +27,7 @@
 }
 
 .createButton:hover {
-    background-color: #2563eb;
+    background-color: #092b1b;
 }
 
 .regionSection {
@@ -72,12 +72,12 @@
     list-style-type: disc;
     display: list-item;
     text-decoration: underline;
-    color: #3b82f6;
+    color: #094227;
     font-size: 0.9rem;
     transition: color 0.2s ease;
     cursor: pointer;
 }
 
 .regionLink:hover {
-    color: #1e40af;
+    color: #092b1b;
 }
