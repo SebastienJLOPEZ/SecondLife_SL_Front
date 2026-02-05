@@ -70,7 +70,7 @@ export default function Header() {
                                     <div className={styles.dropdownMenu}>
                                         <Link href="/profile" onClick={() => setIsProfileMenuOpen(false)}>Mon Profil</Link>
                                         <Link href="/createoffer" onClick={() => setIsProfileMenuOpen(false)}>Créer une Offre</Link>
-                                        <Link href="/settings" onClick={() => setIsProfileMenuOpen(false)}>Paramètres</Link>
+                                        <Link href="/my-offers" onClick={() => setIsProfileMenuOpen(false)}>Mes Offres</Link>
                                         <button 
                                             onClick={() => {
                                                 clearTokens();

@@ -1,48 +1,229 @@
 .offerListContainer {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 16px;
+    padding: 20px;
 }
 
+/* Carte publique */
 .offerCard {
-    border: 1px solid #000;
-    border-radius: 8px;
-    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
     text-decoration: none;
     color: inherit;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .offerCard:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
+/* Carte privée avec layout horizontal */
+.offerCardPrivate {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Contenu principal de l'offre (à gauche) */
+.offerMainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Panneau d'actions (à droite) */
+.offerActionsPanel {
+    width: 180px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-left: 3px solid #e0e0e0;
+}
+
+/* Titre de l'offre */
+.offerTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #d17b16;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Ligne catégorie et type */
+.categoryTypeRow {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    /* background: #e3f2fd;
+    color: #1565c0;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500; */
+}
+
+/* Description */
+.description {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Demande */
+.demand {
+    color: #2e7d32;
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Prix */
+.price {
+    color: #d32f2f;
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Propriétaire */
+.owner {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Statut */
+.status {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.statusValue {
+    font-weight: 600;
+    color: #094227;
+}
+
+/* Section notation */
+.ratingSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.ratingLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.stars {
+    display: flex;
+    gap: 4px;
+}
+
+.star {
+    font-size: 1.5rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+    user-select: none;
+}
+
+.star:hover {
+    color: #ffc107;
+}
+
+.starActive {
+    color: #ffc107;
+}
+
+/* Boutons */
 .buttonContainer {
     display: flex;
-    gap: 12px;
-    margin-top: 12px;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
 }
 
 .statusButton,
 .editButton {
-    flex: 1;
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: 1px solid #000;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #094227;
+    background: white;
+    color: #094227;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
-.statusButton:hover,
+.statusButton:hover {
+    background: #094227;
+    color: white;
+}
+
+.editButton {
+    border-color: #757575;
+    color: #757575;
+}
+
 .editButton:hover {
-    background-color: #f0f0f0;
+    background: #757575;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .offerCardPrivate {
+        flex-direction: column;
+    }
+
+    .offerActionsPanel {
+        width: 100%;
+        border-left: none;
+        border-top: 3px solid #e0e0e0;
+    }
+
+    .buttonContainer {
+        flex-direction: row;
+    }
+
+    .statusButton,
+    .editButton {
+        flex: 1;
+    }
 }

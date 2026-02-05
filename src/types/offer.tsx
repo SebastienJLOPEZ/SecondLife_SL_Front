@@ -11,6 +11,11 @@ export interface Offer {
         name: string;
         surname: string;
     };
+    buyer?: {
+        _id: string;
+        name: string;
+        surname: string;
+    };
     status: string;
     uptadedAt: string;
 }

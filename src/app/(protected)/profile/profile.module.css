@@ -1,0 +1,203 @@
+.profileContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profileCard {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.profileHeader {
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.profileName {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+}
+
+.firstName {
+    color: #094227;
+}
+
+.lastName {
+    color: #333;
+}
+
+.profileEmail {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.profileSection {
+    margin-bottom: 1.5rem;
+}
+
+.profileSection h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoLabel {
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+}
+
+.infoValue {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.profileActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btnEdit,
+.btnSave,
+.btnCancel {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btnEdit {
+    background: #094227;
+    color: white;
+}
+
+.btnEdit:hover {
+    background: #063618;
+}
+
+.btnSave {
+    background: #094227;
+    color: white;
+}
+
+.btnSave:hover {
+    background: #063618;
+}
+
+.btnCancel {
+    background: #6b7280;
+    color: white;
+}
+
+.btnCancel:hover {
+    background: #4b5563;
+}
+
+.profileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.formGroup input {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.formGroup input:focus {
+    outline: none;
+    border-color: #094227;
+    box-shadow: 0 0 0 3px rgba(9, 66, 39, 0.1);
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.editTitle {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0 0 1.5rem 0;
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .profileContainer {
+        padding: 1rem;
+    }
+
+    .profileCard {
+        padding: 1.5rem;
+    }
+
+    .profileName {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .formRow {
+        grid-template-columns: 1fr;
+    }
+
+    .profileActions {
+        flex-direction: column;
+    }
+
+    .btnEdit,
+    .btnSave,
+    .btnCancel {
+        width: 100%;
+    }
+}

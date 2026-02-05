@@ -25,6 +25,7 @@ export default function CreateOfferPage() {
     const [type, setType] = useState<'troc' | 'don' | 'vente'>('troc');
     const [demand, setDemand] = useState('aucune');
     const [price,  setPrice] = useState<number | ''>('');
+    const [isNegotiable, setIsNegotiable] = useState(false);
 
     const router = useRouter();
 
@@ -38,9 +39,9 @@ export default function CreateOfferPage() {
 
         try {
             const payload = type === 'vente' ?
-            { title, description, category, type, price } : type === 'troc' ?
-            { title, description, category, type, demand } :
-            { title, description, category, type };
+            { title, description, category, type, price, isNegotiable } : type === 'troc' ?
+            { title, description, category, type, demand, isNegotiable } :
+            { title, description, category, type, isNegotiable };
 
             const res = await api.post('/api/offer/add', payload);
             if (res.status === 201) {
