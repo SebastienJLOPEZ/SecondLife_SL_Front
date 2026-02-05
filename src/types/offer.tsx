@@ -23,4 +23,5 @@ export interface Offer {
 export interface OfferListOption {
     offers: Offer[];
     isPublic: boolean;
+    hasBrought?: boolean;
 }

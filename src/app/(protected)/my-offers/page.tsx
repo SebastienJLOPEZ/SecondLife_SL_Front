@@ -28,9 +28,9 @@ export default function MyOffers() {
     return (
         <div className={styles.myOffersContainer}>
             <h1>Mes Offres</h1>
-            <OfferList offers={offersOwner} isPublic={false} />
+            <OfferList offers={offersOwner} isPublic={false} hasBrought={false} />
             <h1>Offres auxquelles j&apos;ai répondu</h1>
-            <OfferList offers={offersBuyer} isPublic={false} />
+            <OfferList offers={offersBuyer} isPublic={false} hasBrought={true} />
         </div>
     )
 }

@@ -7,7 +7,7 @@ import { Offer } from '@/src/types/offer';
 import { OfferListOption } from '@/src/types/offer';
 import api from '@/src/lib/api';
 
-export default function OfferList({ offers, isPublic }: OfferListOption) {
+export default function OfferList({ offers, isPublic, hasBrought }: OfferListOption) {
     const [offerList, setOfferList] = useState<Offer[]>([]);
     const [ratings, setRatings] = useState<{ [key: string]: number }>({});
 
@@ -74,7 +74,7 @@ export default function OfferList({ offers, isPublic }: OfferListOption) {
                             <p className={styles.description}>{truncateText(offer.description)}</p>
                             {offer.demand && <p className={styles.demand}>🔄 Demande : {offer.demand}</p>}
                             {offer.price && <p className={styles.price}>💰 Prix : {offer.price}€</p>}
-                            {offer.hasBrought && (
+                            {hasBrought && (
                                 offer.buyer ? (
                                     <p className={styles.owner}>🤝 Échangeur : {offer.buyer.name} {offer.buyer.surname}</p>
                                 ) : (
