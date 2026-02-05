@@ -11,7 +11,7 @@
 }
 
 .region {
-    fill: #3b82f6;
+    fill: #094227;
     stroke: #ffffff;
     stroke-width: 1;
     cursor: pointer;
@@ -19,12 +19,12 @@
 }
 
 .region:hover {
-    fill: #2563eb;
-    stroke: #1e40af;
+    fill: #094227;
+    stroke: #052517;
     stroke-width: 2;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .region:active {
-    fill: #1e40af;
+    fill: #052517;
 }
