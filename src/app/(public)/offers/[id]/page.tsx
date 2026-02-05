@@ -3,9 +3,11 @@
 import { useState, useEffect, use } from 'react';
 import styles from './offer.module.css';
 import { Offer } from '@/src/types/offer';
+import NegoPopUp from '@/src/components/negoPopUp/negoPopUp';
 
 export default function OfferPage( { params }: { params: Promise<{ id: string }> } ) {
     const [offer, setOffer] = useState<Offer | null>(null);
+    const [showResponsePopup, setShowResponsePopup] = useState(false);
     const { id } = use(params);
 
     useEffect(() => {
@@ -30,6 +32,13 @@ export default function OfferPage( { params }: { params: Promise<{ id: string }>
         fetchOffer();
     }, [id]);
 
+    const handleResponseSuccess = () => {
+        // Afficher un message de succès ou rediriger vers la page des messages
+        alert('Votre message a été envoyé avec succès !');
+        // Optionnel : rediriger vers les messages
+        // router.push('/messages');
+    };
+
     return (
         <div className={styles.offerContainer}>
             {offer ? (
@@ -49,8 +58,22 @@ export default function OfferPage( { params }: { params: Promise<{ id: string }>
                             <h3>Propriétaire</h3>
                             <p>{offer.owner.name} {offer.owner.surname}</p>
                         </div>
-                        <button className={styles.contactButton}>Répondre à l&apos;offre</button>
+                        <button 
+                            className={styles.contactButton}
+                            onClick={() => setShowResponsePopup(true)}
+                        >
+                            Répondre à l&apos;offre
+                        </button>
                     </div>
+
+                    {showResponsePopup && (
+                        <NegoPopUp
+                            offerId={id}
+                            offerTitle={offer.title}
+                            onClose={() => setShowResponsePopup(false)}
+                            onSuccess={handleResponseSuccess}
+                        />
+                    )}
                 </>
             ) : (
                 <p>Chargement de l&apos;offre...</p>

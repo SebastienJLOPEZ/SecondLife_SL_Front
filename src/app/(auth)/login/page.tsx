@@ -15,6 +15,8 @@ export default function LoginPage() {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        console.log('[Login] Tentative de connexion pour:', email);
+
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
@@ -25,13 +27,22 @@ export default function LoginPage() {
 
         const data = await res.json();
         if (res.ok) {
-            localStorage.setItem('accessToken', data.accessToken);
-            localStorage.setItem('refreshToken', data.refreshToken);
+            console.log('[Login] Connexion réussie, stockage des tokens', {
+                hasAccessToken: !!data.accessToken,
+                hasRefreshToken: !!data.refreshToken,
+                accessTokenLength: data.accessToken?.length,
+                refreshTokenLength: data.refreshToken?.length
+            });
+            
+            // Utiliser la fonction setTokens pour assurer la cohérence
+            setTokens(data.accessToken, data.refreshToken);
+            
             alert('Connexion réussie !');
             setTimeout(() => {
                 router.back();
             }, 200);
         } else {
+            console.error('[Login] Erreur de connexion:', data.message);
             alert('Erreur de connexion : ' + data.message);
         }
 

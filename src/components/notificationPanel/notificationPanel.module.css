@@ -52,10 +52,61 @@
     background-color: #f8f9fa;
 }
 
+.panelHeader > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 .panelHeader h2 {
     margin: 0;
     font-size: 1.5rem;
     color: #333;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.actionButton {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #666;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.actionButton:hover {
+    background-color: #e0e0e0;
+}
+
+.unreadBadge {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 12px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.connectionStatus {
+    color: #28a745;
+    font-size: 0.75rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .closeButton {
@@ -92,10 +143,100 @@
     margin-bottom: 0.5rem;
     cursor: pointer;
     transition: background-color 0.2s;
+    position: relative;
+    border-left: 3px solid transparent;
 }
 
 .notificationItem:hover {
     background-color: #f5f5f5;
+}
+
+.notificationItem.unread {
+    background-color: #e3f2fd;
+    border-left-color: #2196f3;
+}
+
+.notificationItem.unread:hover {
+    background-color: #d1e9fc;
+}
+
+.notificationContent {
+    flex: 1;
+    min-width: 0;
+}
+
+.notificationText {
+    margin: 0;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.notificationTime {
+    font-size: 0.8rem;
+    color: #999;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.deleteButton {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #999;
+    padding: 0.25rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.notificationItem:hover .deleteButton {
+    opacity: 1;
+}
+
+.deleteButton:hover {
+    background-color: #ffebee;
+    color: #dc3545;
+}
+
+.disconnectedWarning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    text-align: center;
+    border: 1px solid #ffc107;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    color: #999;
+    text-align: center;
+}
+
+.emptyIcon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.emptyState p {
+    margin: 0;
+    font-size: 1rem;
 }
 
 .notificationIcon {
@@ -110,9 +251,25 @@
 }
 
 .notificationText {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.25rem 0;
     color: #666;
     font-size: 0.9rem;
+}
+
+.notificationPreview {
+    margin: 0 0 0.5rem 0;
+    color: #999;
+    font-size: 0.85rem;
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notificationFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .notificationTime {
