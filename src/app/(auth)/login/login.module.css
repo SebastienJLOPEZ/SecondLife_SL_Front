@@ -1,0 +1,133 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container h1 {
+    color: black;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form > div:first-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #094227;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form > div:not(:first-child) {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form > div:not(:first-child) input {
+    padding-right: 3rem;
+}
+
+.form > div:not(:first-child) button {
+    position: absolute;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.form > div:not(:first-child) button:hover {
+    transform: scale(1.1);
+}
+
+.form button[type="submit"] {
+    background: #d17b16;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(209, 123, 22, 0.4);
+}
+
+.form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.form p {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: black;
+    font-size: 0.95rem;
+}
+
+.container p a {
+    color: #d17b16;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.container p a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .form {
+        padding: 1rem;
+    }
+
+    .form h1 {
+        font-size: 2rem;
+    }
+
+    .form > div {
+        padding: 1.5rem;
+    }
+
+    .form > div:first-child {
+        grid-template-columns: 1fr;
+    }
+}

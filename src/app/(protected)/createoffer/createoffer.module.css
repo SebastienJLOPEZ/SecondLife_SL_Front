@@ -43,7 +43,7 @@
 
 .form button {
     padding: 0.75rem;
-    background-color: #0070f3;
+    background-color: #094227;
     color: white;
     border: none;
     border-radius: 4px;
@@ -53,7 +53,7 @@
 }
 
 .form button:hover {
-    background-color: #0051cc;
+    background-color: #072a16;
 }
 
 .imagePreview {

@@ -3,12 +3,14 @@ import Link from "next/dist/client/link";
 import RegionMap from "@/src/components/regionMap/regionMap";
 import styles from './page.module.css';
 import france from '@svg-maps/france.regions';
+import Image from "next/image";
 
 export default function Home() {
   return (
     <main >
       <ThemePopUp />
       <div className={styles.title}>
+        <Image src="/Images/logo.webp" alt="Logo SecondLife" width={250} height={250} />
         <h2>Bienvenue sur le site d&apos;échange entre particuliers</h2>
       </div>
       <div className={styles.offerSection}>

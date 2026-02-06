@@ -44,13 +44,18 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: #90ee90;
+  background-color: #f3ebde;
   text-decoration: none;
   color: #000;
 }
 
+.threadCard h3 {
+  color: #094227;
+  font-weight: 600;
+}
+
 .threadCard:hover {
-  background-color: #7fd87f;
+  background-color: #b9b2a8;
 }
 
 .pagination {

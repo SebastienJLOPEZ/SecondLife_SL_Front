@@ -48,9 +48,29 @@ export default function ArticlesPage( { params }: { params: Promise<{ id: string
 
     return (
         <div className={styles.container}>
-            <h1>{articles.title}</h1>
-            <small>Par : {articles.writer}, le {new Date(articles.createdAt).toLocaleDateString()}</small>
-            {articles.type === 'video' && articles.video ? (
+            {/* Titre */}
+            <h1 className={styles.title}>{articles.title}</h1>
+            
+            {/* Description */}
+            {articles.description && (
+                <p className={styles.description}>{articles.description}</p>
+            )}
+            
+            {/* Badges + Date + Auteur */}
+            <div className={styles.metaInfo}>
+                <div className={styles.badges}>
+                    <span className={styles.badge}>{articles.category}</span>
+                    <span className={styles.badge}>{articles.type}</span>
+                </div>
+                <div className={styles.info}>
+                    <span className={styles.writer}>Par {articles.writer}</span>
+                    <span className={styles.separator}>•</span>
+                    <span className={styles.date}>{new Date(articles.createdAt).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+            </div>
+            
+            {/* Vidéo */}
+            {articles.video && (
                 <div className={styles.videoContainer}>
                     <iframe 
                         src={getYouTubeEmbedUrl(articles.video)} 
@@ -60,11 +80,13 @@ export default function ArticlesPage( { params }: { params: Promise<{ id: string
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     />
                 </div>
-            ) : (
-                <div>
-                    <p>{articles.description}</p>
-                    {articles.content?.split('\n').map((paragraph, index) => (
-                        <p key={index} className={styles.paragraph}>{paragraph}</p>
+            )}
+            
+            {/* Contenu */}
+            {articles.content && (
+                <div className={styles.content}>
+                    {articles.content.split('\n').map((paragraph, index) => (
+                        paragraph.trim() && <p key={index} className={styles.paragraph}>{paragraph}</p>
                     ))}
                 </div>
             )}
