@@ -67,13 +67,12 @@ export default function ForumPage() {
 
     return (
         <div className={styles.forumContainer}>
-            <h1>Forum</h1>
             <div className={styles.adminThreadsSection}>
                 <h2>Forum Généraux</h2>
                 {adminThreads.map((thread) => (
                     <Link key={thread._id} href={`/forum/${thread._id}`}  className={styles.threadCard}>
                         <h3>{thread.subject}</h3>
-                        <p>Posté par: {thread.poster?.name} {thread.poster?.surname}</p>
+                        <p>Posté par: {thread.poster?.name}</p>
                         <p>Messages: {thread.messages.length}</p>
                         <p>Créé le: {new Date(thread.createdAt).toLocaleDateString()}</p>
                     </Link>

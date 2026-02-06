@@ -60,10 +60,8 @@ export default function ForumPage( { params }: { params: Promise<{ id: string }>
 
     return (
         <>
-            <Link href="/forum">Retour aux forums</Link>
             <div className={styles.formContainer}>
             <div className={styles.firstMessageContainer}>
-                <div className={styles.firstMessage}>
                     <div className={styles.firstMessageInfo}>
                         <p>{thread.poster.name} {thread.poster.surname}</p>
                         <small>Auteur</small>
@@ -73,7 +71,6 @@ export default function ForumPage( { params }: { params: Promise<{ id: string }>
                         <small>{new Date(thread.firstMessage.timestamp).toLocaleString()}</small>
                         <p>{thread.firstMessage.content}</p>
                     </div>
-                </div>
             </div>
             <div className={styles.messages}>
                 {thread.messages.map((message, index) => (

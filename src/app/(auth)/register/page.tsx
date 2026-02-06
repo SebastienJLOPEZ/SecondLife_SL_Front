@@ -52,13 +52,16 @@ export default function RegisterPage() {
         <div className={styles.container}>
             <h1>Inscription</h1>
             <div>
-                <form onSubmit={handleRegister}>
+                <form onSubmit={handleRegister} className={styles.form}>
                     <div>
-                        <label htmlFor="name">Prénom</label>
-                        <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-
-                        <label htmlFor="surname">Nom</label>
-                        <input type="text" id="surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
+                        <div>
+                            <label htmlFor="name">Prénom</label>
+                            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+                        </div>
+                        <div>
+                            <label htmlFor="surname">Nom</label>
+                            <input type="text" id="surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
+                        </div>
                     </div>
 
                     <label htmlFor="email">Email</label>

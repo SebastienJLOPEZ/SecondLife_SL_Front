@@ -1,4 +1,9 @@
 .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
     text-align: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -68,9 +73,29 @@
     padding-left: 1.5rem;
 }
 
+@media screen and (max-width: 600px) {
+    .regionMapContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mapWrapper {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .regionList {
+        align-items: center;
+        max-height: none;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
 .regionLink {
-    list-style-type: disc;
-    display: list-item;
     text-decoration: underline;
     color: #094227;
     font-size: 0.9rem;

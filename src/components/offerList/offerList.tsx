@@ -51,15 +51,19 @@ export default function OfferList({ offers, isPublic, hasBrought }: OfferListOpt
             {isPublic ? (
                 offerList.map((offer) => (
                     <Link key={offer._id} href={`/offers/${offer._id}`} className={styles.offerCard}>
-                        <h3 className={styles.offerTitle}>{offer.title}</h3>
-                        <div className={styles.categoryTypeRow}>
-                            <span className={styles.badge}>{offer.category}</span>
-                            <span className={styles.badge}>{offer.type}</span>
+                        <div className={styles.offerMainContent}>
+                            <h3 className={styles.offerTitle}>{offer.title}</h3>
+                            <div className={styles.categoryTypeRow}>
+                                <span className={styles.badge}>{offer.category}</span>
+                                <span className={styles.badge}>{offer.type}</span>
+                            </div>
+                            <p className={styles.description}>{truncateText(offer.description)}</p>
+                            {offer.demand && <p className={styles.demand}>🔄 Demande : {offer.demand}</p>}
+                            {offer.price && <p className={styles.price}>💰 Prix : {offer.price}€</p>}
                         </div>
-                        <p className={styles.description}>{truncateText(offer.description)}</p>
-                        {offer.demand && <p className={styles.demand}>🔄 Demande : {offer.demand}</p>}
-                        {offer.price && <p className={styles.price}>💰 Prix : {offer.price}€</p>}
-                        <p className={styles.owner}>👤 {offer.owner.name} {offer.owner.surname}</p>
+                        <div className={styles.ownerSection}>
+                            <p className={styles.owner}>👤 {offer.owner.name} {offer.owner.surname}</p>
+                        </div>
                     </Link>
                 ))
             ) : (
@@ -74,16 +78,22 @@ export default function OfferList({ offers, isPublic, hasBrought }: OfferListOpt
                             <p className={styles.description}>{truncateText(offer.description)}</p>
                             {offer.demand && <p className={styles.demand}>🔄 Demande : {offer.demand}</p>}
                             {offer.price && <p className={styles.price}>💰 Prix : {offer.price}€</p>}
-                            {hasBrought && (
-                                offer.buyer ? (
-                                    <p className={styles.owner}>🤝 Échangeur : {offer.buyer.name} {offer.buyer.surname}</p>
-                                ) : (
-                                    <p className={styles.owner}>👤 Propriétaire : {offer.owner?.name} {offer.owner?.surname || ''}</p>
-                                )
-                            )}
+
                             <p className={styles.status}>Statut : <span className={styles.statusValue}>{offer.status}</span></p>
                         </div>
                         <div className={styles.offerActionsPanel}>
+                            {hasBrought ? (
+                                <div>
+                                    <p>Propriétaire : {offer.owner?.name} {offer.owner?.surname || ''}</p>
+                                </div>
+                            ) : (
+                                offer.buyer && (
+                                    <div>
+                                        <p>Échangeur : {offer.buyer.name} {offer.buyer.surname}</p>
+                                    </div>
+                                )
+                            )}
+
                             <div className={styles.ratingSection}>
                                 <p className={styles.ratingLabel}>Notation</p>
                                 <div className={styles.stars}>
@@ -98,7 +108,7 @@ export default function OfferList({ offers, isPublic, hasBrought }: OfferListOpt
                                     ))}
                                 </div>
                             </div>
-                            
+
                             {offer.status !== 'exchanged' && offer.status !== 'removed' && (
                                 <div className={styles.buttonContainer}>
                                     <button onClick={() => handleStatusChange(offer._id)} className={styles.statusButton}>

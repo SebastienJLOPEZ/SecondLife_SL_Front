@@ -1,0 +1,133 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Titre */
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #094227;
+    margin: 0 0 24px 0;
+    line-height: 1.2;
+}
+
+/* Description */
+.description {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.7;
+    margin: 0 0 24px 0;
+    font-style: italic;
+}
+
+/* Meta info (badges + date + auteur) */
+.metaInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #ffaf54;
+    color: #a15b0a;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #094227;
+}
+
+.writer {
+    font-weight: 600;
+    color: #094227;
+}
+
+.separator {
+    color: #ccc;
+}
+
+.date {
+    color: #094227;
+}
+
+/* Vidéo YouTube */
+.videoContainer {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    border: 2px solid #000;
+}
+
+.videoIframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Contenu */
+.content {
+    color: #094227;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.paragraph {
+    margin: 0 0 20px 0;
+    color: #094227;
+}
+
+.paragraph:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 16px;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+    }
+    
+    .description {
+        font-size: 1rem;
+    }
+    
+    .metaInfo {
+        margin-bottom: 24px;
+    }
+    
+    .videoContainer {
+        margin-bottom: 24px;
+    }
+}

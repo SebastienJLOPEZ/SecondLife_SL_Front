@@ -9,9 +9,9 @@ import { Offer } from '@/src/types/offer';
 import api from '@/src/lib/api';
 
 export default function  OfferListPage() {
-    // const [region, setRegion] = useState<string>('');
-    // const [department, setDepartment] = useState<string>('');
-    // const [city, setCity] = useState<string>('');
+    const [region, setRegion] = useState<string>('');
+    const [department, setDepartment] = useState<string>('');
+    const [city, setCity] = useState<string>('');
     // Will correct this section later, need to correctly input location for offers
     const [category, setCategory] = useState<string>('');
     const [types, setTypes] = useState<string[]>([]);
@@ -21,7 +21,7 @@ export default function  OfferListPage() {
 
     const isPublic = true; // Always true for this page
 
-    const fetchOffers = async (page: number, filters?: { category?: string; types?: string[] }) => {
+    const fetchOffers = async (page: number, filters?: { category?: string; types?: string[]; region?: string; department?: string; city?: string }) => {
         const isConnected = !!localStorage.getItem('accessToken');
 
         try {
@@ -30,7 +30,10 @@ export default function  OfferListPage() {
                 page: page.toString(),
                 limit: '10',
                 ...(filters?.category && { category: filters.category }),
-                ...(filters?.types && { types: filters.types.join(',') })
+                ...(filters?.types && { types: filters.types.join(',') }),
+                ...(filters?.region && { region: filters.region }),
+                ...(filters?.department && { department: filters.department }),
+                ...(filters?.city && { city: filters.city }),
             });
 
             console.log('Fetching offers with payload:', payload.toString());
@@ -77,7 +80,10 @@ export default function  OfferListPage() {
 
         const filters = {
             category: category !== "none" ? category : undefined,
-            types: types.length > 0 ? types : undefined
+            types: types.length > 0 ? types : undefined,
+            region: region !== "" ? region : undefined,
+            department: department !== "" ? department : undefined,
+            city: city !== "" ? city : undefined
         };
 
         setHasFilters(!!(filters.category || filters.types));
@@ -99,57 +105,85 @@ export default function  OfferListPage() {
 
     return (
         <div className={styles.offerPageContainer}>
+            <h1>Liste des offres</h1>
             <div className={styles.filterContainer}>
-                <form action="">
-                    <label htmlFor="titre"></label>
-                    <input type="text" id="titre" name="titre" placeholder="Titre de l'offre" />
-                    <label htmlFor="category">Catégorie :</label>
-                    <select id="category" name="category" value={category} onChange={(e) => setCategory(e.target.value as Category)}>
-                        <option value={Category.none}>Toutes</option>
-                        {Object.entries(Category)
-                            .filter(([key]) => key !== 'none')
-                            .map(([key, value]) => (
-                                <option key={key} value={key}>{value}</option>
-                            ))
-                        }
-                    </select>
-                    <label>Type d&apos;offre</label>
-                    <div className={styles.radioGroup}>
-                        <label>
-                        <input type="checkbox" value="troc" checked={types.includes('troc')} onChange={(e) => {
-                            if (e.target.checked) {
-                                setTypes([...types, 'troc']);
-                            } else {
-                                setTypes(types.filter(t => t !== 'troc'));
-                            }
-                        }} />
-                            Troc
-                        </label>
-                        <label>
-                        <input type="checkbox" value="vente" checked={types.includes('vente')} onChange={(e) => {
-                            if (e.target.checked) {
-                                setTypes([...types, 'vente']);
-                            } else {
-                                setTypes(types.filter(t => t !== 'vente'));
-                            }
-                        }} />
-                            Vente
-                        </label>
-                        <label>
-                        <input type="checkbox" value="don" checked={types.includes('don')} onChange={(e) => {
-                            if (e.target.checked) {
-                                setTypes([...types, 'don']);
-                            } else {
-                                setTypes(types.filter(t => t !== 'don'));
-                            }
-                        }} />
-                            Don
-                        </label>
-                </div>
-                    <button type="submit" onClick={handleFilterSetting}>Appliquer les filtres</button>
+                <form onSubmit={handleFilterSetting}>
+                    <div className={styles.titleRow}>
+                        <input type="text" id="titre" name="titre" placeholder="Titre de l'offre" className={styles.titleInput} />
+                    </div>
+                    
+                    <div className={styles.filterRow}>
+                        <div className={styles.locationColumn}>
+                            <div className={styles.inputGroup}>
+                                <label htmlFor="region">Région</label>
+                                <input type="text" id="region" name="region" placeholder="Région" value={region} onChange={(e) => setRegion(e.target.value)} />
+                            </div>
+                            <div className={styles.inputGroup}>
+                                <label htmlFor="department">Département</label>
+                                <input type="text" id="department" name="department" placeholder="Département" value={department} onChange={(e) => setDepartment(e.target.value)} />
+                            </div>
+                            <div className={styles.inputGroup}>
+                                <label htmlFor="city">Ville</label>
+                                <input type="text" id="city" name="city" placeholder="Ville" value={city} onChange={(e) => setCity(e.target.value)} />
+                            </div>
+                        </div>
+                        
+                        <div className={styles.categoryTypeColumn}>
+                            <div className={styles.inputGroup}>
+                                <label htmlFor="category">Catégorie</label>
+                                <select id="category" name="category" value={category} onChange={(e) => setCategory(e.target.value as Category)}>
+                                    <option value={Category.none}>Toutes</option>
+                                    {Object.entries(Category)
+                                        .filter(([key]) => key !== 'none')
+                                        .map(([key, value]) => (
+                                            <option key={key} value={key}>{value}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
+                            
+                            <div className={styles.inputGroup}>
+                                <label>Type d&apos;offre</label>
+                                <div className={styles.checkboxGroup}>
+                                    <label className={styles.checkboxLabel}>
+                                        <input type="checkbox" value="troc" checked={types.includes('troc')} onChange={(e) => {
+                                            if (e.target.checked) {
+                                                setTypes([...types, 'troc']);
+                                            } else {
+                                                setTypes(types.filter(t => t !== 'troc'));
+                                            }
+                                        }} />
+                                        Troc
+                                    </label>
+                                    <label className={styles.checkboxLabel}>
+                                        <input type="checkbox" value="vente" checked={types.includes('vente')} onChange={(e) => {
+                                            if (e.target.checked) {
+                                                setTypes([...types, 'vente']);
+                                            } else {
+                                                setTypes(types.filter(t => t !== 'vente'));
+                                            }
+                                        }} />
+                                        Vente
+                                    </label>
+                                    <label className={styles.checkboxLabel}>
+                                        <input type="checkbox" value="don" checked={types.includes('don')} onChange={(e) => {
+                                            if (e.target.checked) {
+                                                setTypes([...types, 'don']);
+                                            } else {
+                                                setTypes(types.filter(t => t !== 'don'));
+                                            }
+                                        }} />
+                                        Don
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" className={styles.filterButton}>Appliquer les filtres</button>
+                        </div>
+                    </div>
                 </form>
             </div>
-            <h1>Liste des offres</h1>
+            
             <OfferList offers={offers} isPublic={isPublic} />
 
             {pagination.pages > 1 && (
