@@ -10,7 +10,7 @@ export default function Home() {
     <main >
       <ThemePopUp />
       <div className={styles.title}>
-        <Image src="/Images/logo.webp" alt="Logo SecondLife" width={250} height={250} />
+        <Image src="/images/logo.webp" alt="SecondLife Logo"  width={250} height={250} />
         <h2>Bienvenue sur le site d&apos;échange entre particuliers</h2>
       </div>
       <div className={styles.offerSection}>
