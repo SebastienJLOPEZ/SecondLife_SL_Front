@@ -114,6 +114,20 @@
     opacity: 0.8;
 }
 
+.error {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.form button[type="submit"]:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 @media (max-width: 600px) {
     .form {
         padding: 1rem;
